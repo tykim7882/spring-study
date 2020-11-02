@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--
+ (web.xml)에서 DispatcherServlet 의 servlet-name action 이면 
+컨테이너 구동 시 /WEB-INF/ 에서 action-servlet.xml 을 찾아 로딩함 (서블릿네임-servlet.xml 로 찾음)
+ -->
+
+</beans>

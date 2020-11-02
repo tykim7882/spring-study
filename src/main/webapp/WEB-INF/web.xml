@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<!-- <servlet> <description></description> <display-name>action</display-name> 
+		<servlet-name>action</servlet-name> <servlet-class>com.springbook.view.controller.DispatcherServlet</servlet-class> 
+		</servlet> <servlet-mapping> <servlet-name>action</servlet-name> <url-pattern>*.do</url-pattern> 
+		</servlet-mapping> -->
+		
+		<!--
+		서버를 구동하면  
+		1. web.xml 파일을 로딩하여 서블릿 컨테이너 구동
+		2. 서블릿 컨테이너는 contextConfigLocation 객체를 생성 
+		: src/main/resources 에 있는 파일 로딩 => root컨테이너 
+		서비스 구현 클래스나 dao객체들이 메모리에 생성
+		3. .do가 호출되면 DispatcherServlet 객체 생성
+		4. DispatcherServlet 객체는 /WEB-INF/..의 설정파일을 로딩하여 두번째 컨테이너 구동
+		: 컨트롤러 객체를 메모리에 생성함 
+		루트컨테이너(부모컨테이너) : ServiceImpl - DAO
+		dispatcherservlet이 생성한 자식컨테이너 - Controller 
+		 -->
+	
+	<!-- 
+	presentation-layer.xml (controller)이전에 구동
+	applicationContext.xml 를 구동(service) 
+	 -->
+	<!-- needed for ContextLoaderListener -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+
+	<!-- Bootstraps the root web application context before servlet initialization -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<!-- 한글 인코딩 -->
+	<filter>
+		<filter-name>characterEncoding</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>characterEncoding</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+
+	<!-- The front controller of this Spring Web application, responsible for 
+		handling all application requests -->
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<!-- 기본은 WEB-INF/servletname-servlet.xml 을 찾지만 변경가능 -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/presentation-layer.xml</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+</web-app>

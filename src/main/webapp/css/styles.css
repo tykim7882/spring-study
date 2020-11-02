@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css?family=Mukta:300,400,700&display=swap");
+@import "reset.css";
+@import "board.css";
+body {
+  width: 100%;
+  background-color: white;
+  color: #020202;
+  font-family: "Mukta", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+

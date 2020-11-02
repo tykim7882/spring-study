@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="collectionBeanList" class="collections.CollectionBeanList">
+		<property name="addressList">
+			<list>
+				<value>서울시 강남구</value>
+				<value>서울시 강서구</value>
+				<value>서울시 강동구</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="collectionBeanSet" class="collections.CollectionBeanSet">
+		<property name="addressList">
+			<set>
+				<value>서울시 강남구</value>
+				<value>서울시 강서구</value>
+				<value>서울시 강동구</value>
+				<value>서울시 강남구</value>
+			</set>
+		</property>
+	</bean>
+	
+	<bean id="collectionBeanMap" class="collections.CollectionBeanMap">
+		<property name="addressList">
+			<map>
+				<entry>
+					<key><value>고길동</value></key>
+					<value>서울시 강남구</value>
+				</entry>
+				<entry>
+					<key><value>고구마</value></key>
+					<value>서울시 강동구</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id ="collectionBeanProperties" class="collections.CollectionBeanProperties">
+		<property name="addressList">
+			<props>
+				<prop key="고길동">서울시 강남구</prop>
+				<prop key="고구마">서울시 강동구</prop>
+				<prop key="고두심">제주도 서귀포시</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,12 @@
+package com.springbook.biz.common;
+
+public class Log4jAdvice {
+
+	public void printLogging() {
+		System.out.println("[공통로그-Log4j] 비지니스 로직 수행 전 동작~~");
+	}
+	
+	public void printLoggingGetMethod() {
+		System.out.println("[GET처리-Log4j] 로그입니다 ==============");
+	}
+}
